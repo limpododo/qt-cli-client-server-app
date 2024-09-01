@@ -5,16 +5,16 @@
 #include "interfaces/IWriter.h"
 
 class BinFileWriter: public IWriter {
-    QString path;
     QFile *pFile;
-public:
-    BinFileWriter() = default;
-    BinFileWriter(const QString& path): path(path), pFile(new QFile(path)) {};
-    inline ~BinFileWriter() { delete pFile; }
 
-    inline void setPath(const QString& path) { delete pFile; this->path = path; pFile = new QFile(this->path); }
-    inline QString getPath() { return path; }
-    void write(const char *pBuffer, const quint32 size) override;
+public:
+    explicit BinFileWriter(const QString& path): pFile(new QFile(path)) {};
+    inline ~BinFileWriter() { pFile->deleteLater(); }
+
+    inline void setPath(const QString& path) { pFile->deleteLater(); pFile = new QFile(path); }
+    inline QString getPath() { return pFile->fileName(); }
+
+    void write(const char* pData, quint32 size) override;
 };
 
 
