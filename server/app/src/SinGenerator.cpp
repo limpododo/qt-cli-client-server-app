@@ -6,7 +6,7 @@ QByteArray SinGenerator::getData() {
 
     for (int i = 0; i < NB_OF_SAMPLES; i++)
     {
-        stream << int(AMPLITUDE * sin(angle) + OFFSET);
+        stream << static_cast<int>(AMPLITUDE * sin(angle) + OFFSET);
         angle += (2 * M_PI) / NB_OF_SAMPLES;
     }
 
