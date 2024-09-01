@@ -54,10 +54,12 @@ void TcpServer::sendData(const char* data, quint32 size) {
 }
 
 void TcpServer::onSendData() {
-    QByteArray data;
+    if(pDataGenerator != nullptr) {
+        QByteArray data;
 
-    data = pDataGenerator->getData();
-    sendData(data, data.size());
+        data = pDataGenerator->getData();
+        sendData(data, data.size());
+    }
 }
 
 void TcpServer::controlBroadcastTimer() {
