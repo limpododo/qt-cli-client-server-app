@@ -13,9 +13,9 @@ TcpServer::~TcpServer() {
     pServer->deleteLater();
 }
 
-void TcpServer::start(const QHostAddress& ip, const quint16 port) {
-    qDebug() << "Start listening on:" << ip.toString() << ":" << port;
-    pServer->listen(ip, port);
+void TcpServer::start(const QHostAddress& serverIp, quint16 serverPort) {
+    qDebug() << "Start listening on:" << serverIp.toString() << ":" << serverPort;
+    pServer->listen(serverIp, serverPort);
 }
 
 void TcpServer::stop() {
@@ -47,9 +47,9 @@ void TcpServer::onClientDisconnected() {
     controlBroadcastTimer();
 }
 
-void TcpServer::sendData(const char* data, quint32 size) {
+void TcpServer::sendData(const char* pData, quint32 size) {
     for(auto client : clients) {
-        client->write(data, size);
+        client->write(pData, size);
     }
 }
 

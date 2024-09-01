@@ -27,13 +27,13 @@ public slots:
     void onSendData();
 
 public:
-    explicit TcpServer(QObject* = nullptr);
+    explicit TcpServer(QObject* parent = nullptr);
     ~TcpServer() override;
 
     inline void setDataGenerator(IDataGenerator *pDataGenerator) { this->pDataGenerator = pDataGenerator; }
-    void sendData(const char*, quint32);
+    void sendData(const char* pData, quint32 size);
 
-    void start(const QHostAddress&, quint16);
+    void start(const QHostAddress& serverIp, quint16 serverPort);
     void stop();
 
 private:
