@@ -2,6 +2,7 @@
 
 TcpClient::TcpClient(QObject *parent): QObject(parent), pSocket(new QTcpSocket(this)), pWriter(nullptr) {
     connect(pSocket, SIGNAL(readyRead()), this, SLOT(onDataReceive()));
+    connect(pSocket, SIGNAL(disconnected()), this, SLOT(onDataReceive()));
 }
 
 TcpClient::~TcpClient() {
@@ -25,6 +26,10 @@ void TcpClient::onDataReceive() {
 
     if(pWriter != nullptr)
         pWriter->write(data.constData(), data.size());
+}
+
+void TcpClient::onDisconnected() {
+    pSocket->deleteLater();
 }
 
 void TcpClient::setWriter(IWriter *writer) {

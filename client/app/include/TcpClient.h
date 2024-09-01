@@ -17,6 +17,7 @@ Q_OBJECT
     IWriter* pWriter;
 public slots:
     void onDataReceive();
+    void onDisconnected();
 public:
     explicit TcpClient(QObject *parent = nullptr);
     ~TcpClient() override;
