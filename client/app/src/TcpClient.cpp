@@ -5,7 +5,8 @@ TcpClient::TcpClient(QObject *parent): QObject(parent), pSocket(new QTcpSocket(t
 }
 
 TcpClient::~TcpClient() {
-    delete pSocket;
+    pSocket->disconnectFromHost();
+    pSocket->deleteLater();
 }
 
 void TcpClient::connectToServer(const QHostAddress& ip, const quint16 port) {
