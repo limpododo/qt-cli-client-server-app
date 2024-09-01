@@ -1,7 +1,7 @@
 #include <QCoreApplication>
 #include "TcpClient.h"
 
-#define PATH_TO_FILE "/home/tmp/file"
+#define PATH_TO_FILE "file"
 
 int main(int argc, char* argv[]) {
     QCoreApplication app(argc, argv);
