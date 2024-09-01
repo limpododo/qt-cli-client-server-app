@@ -32,9 +32,5 @@ void TcpClient::onDisconnected() {
     pSocket->deleteLater();
 }
 
-void TcpClient::setWriter(IWriter *writer) {
-    pWriter = writer;
-}
-
 
 
