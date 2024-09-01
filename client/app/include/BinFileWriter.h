@@ -4,7 +4,7 @@
 #include <QFile>
 #include "interfaces/IWriter.h"
 
-class BinFileWriter: public IWriter {
+class BinFileWriter final : public IWriter {
     QFile *pFile;
 
 public:

@@ -1,8 +1,8 @@
 #include "BinFileWriter.h"
 
-void BinFileWriter::write(const char *data, const quint32 size) {
+void BinFileWriter::write(const char *pData, quint32 size) {
     if(pFile->open(QIODevice::Append)) {
-        pFile->write(data, size);
+        pFile->write(pData, size);
         pFile->close();
     }
 }
